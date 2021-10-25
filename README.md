@@ -15,5 +15,25 @@
         ├──part obligatoria
             └──Player.py
             └──resources
+        └──Projecte
+            └──Nave
+                └──Juego.py
+                └──Player.py
+                └──Enemy.py
+                └──Cloud.py
+                └──Shots.py
+                └──Pantalla_bienvenida.py
+                └──Pantalla_final.py
+                └──bases_de_datos.py
+                └──variables.py
+                └──resources
+                   └──Apoxode_-_Electric_1.ogg
+                   └──Collision.ogg
+                   └──Falling_putter.ogg
+                   └──Rising_putter.ogg
+                   └──cloud.png
+                   └──jet.png
+                   └──missile.png
+                   └──missile_d.png
           
 ```
