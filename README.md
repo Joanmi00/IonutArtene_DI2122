@@ -17,13 +17,13 @@
             └──resources
         └──Projecte
             └──Nave
-                └──Juego.py
-                └──Player.py
-                └──Enemy.py
-                └──Cloud.py
-                └──Shots.py
-                └──Pantalla_bienvenida.py
-                └──Pantalla_final.py
+                └──juego.py
+                └──player.py
+                └──enemy.py
+                └──cloud.py
+                └──shots.py
+                └──pantalla_bienvenida.py
+                └──pantalla_final.py
                 └──bases_de_datos.py
                 └──variables.py
                 └──resources
