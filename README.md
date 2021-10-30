@@ -11,29 +11,39 @@
         ├── 13-radint.py
         ├── 8-numimp.py
         ├── 9-llista.py
-    └── pratica1
-        ├──part obligatoria
-            └──Player.py
-            └──resources
-        └──Projecte
-            └──Nave
-                └──juego.py
-                └──player.py
-                └──enemy.py
-                └──cloud.py
-                └──shots.py
-                └──pantalla_bienvenida.py
-                └──pantalla_final.py
-                └──bases_de_datos.py
-                └──variables.py
-                └──resources
-                   └──Apoxode_-_Electric_1.ogg
-                   └──Collision.ogg
-                   └──Falling_putter.ogg
-                   └──Rising_putter.ogg
-                   └──cloud.png
-                   └──jet.png
-                   └──missile.png
-                   └──missile_d.png
+    ├── part obligatoria
+        ├── Player.py
+        └── resources
+            ├── Apoxode_-_Electric_1.ogg
+            ├── cloud.png
+            ├── Collision.ogg
+            ├── Falling_putter.ogg
+            ├── jet.png
+            ├── missile.png
+            └── Rising_putter.ogg
+    └── Projecte
+        └── Nave
+            ├── bases_de_datos.py
+            ├── cloud.py
+            ├── enemy.py
+            ├── juego.py
+            ├── pantalla_bienvenida.py
+            ├── pantalla_final.py
+            ├── player.py
+            ├── powerup.py
+            ├── requirements.txt
+            ├── resources
+            │   ├── Apoxode_-_Electric_1.ogg
+            │   ├── cloud.png
+            │   ├── Collision.ogg
+            │   ├── Falling_putter.ogg
+            │   ├── jet.png
+            │   ├── missile_d.png
+            │   ├── missile.png
+            │   ├── Rising_putter.ogg
+            │   └── shield.png
+            ├── shots.py
+            └── variables.py
+
           
 ```
