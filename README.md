@@ -4,7 +4,7 @@
 ```
 .
 
-├── Pyside6
+├── Unitat2
 │   └── Entregables
 │       ├── exercici3.py
 │       └── exercici41.py
