@@ -2,13 +2,14 @@
 
 ### Contenidos:
 ```
-
 .
-└── Entregables
-│    ├── exercici3.py
-│    └── Exercici4
-│        ├── config.py
-│        └──exercici41.py
+└──  Unitat2
+│     └── Entregables
+│         ├── exercici3.py
+│         └──Exercici4
+│             ├── config.py
+│             └── exercici41.py
+│           
 │
 │
 └── Unitat 1
