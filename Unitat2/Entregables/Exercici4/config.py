@@ -1,4 +1,4 @@
-from PySide6.QtCore import QSize
+
 
 sizew_b = 150
 sizeh_b = 100
