@@ -176,10 +176,9 @@ class MainWindow(QMainWindow):
 
         """
         self.a_text("")
-        self.guardados = ""
 
     def r_text(self, operacion):
-        """[ Recibe un string que contiene la operacionç
+        """[ Recibe un string que contiene la operacion
         con la cual hacer los calculos]
 
         Args:
