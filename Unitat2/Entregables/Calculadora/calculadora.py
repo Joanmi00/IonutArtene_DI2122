@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-
+        #titulo de la ventana
         self.setWindowTitle("Calculadora")
         # numero de columnas que tendra la calculadora
         num_col = 4
@@ -67,23 +67,21 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
     def mod_label(self):
-        """[summary]
-        Esta funciona es llamada cuando se hace clic en un boton
+        """[Esta funciona es llamada cuando se hace clic en un boton
             y a su vez llama a otra funciona que verifica que el valor
-            introducido es corecto pasandole el valor del boton
+            introducido es corecto pasandole el valor del boton]
+
         """
         button = self.sender().text()
         self.verifica_valor(button)
 
     def verifica_valor(self, button):
-        """[summary]
-        Esta funcion es llamada para comprobar los valores que recibe
-        son existen haciendo las comprobaciones pertinentes y segun
-        la tecla pulsada hace un tipo de comprobacion u otro
+        """[Esta funcion es llamada para comprobar los valores que recibe
+        existen haciendo las comprobaciones pertinentes ]
+
 
         Args:
-            button (String): [Es el texto que tiene el boton que ha sido
-                                pulsado]
+            button ([String]): [texto del boton]
         """
         operacion = ['+', '*', '-', '/']
         numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -95,38 +93,40 @@ class MainWindow(QMainWindow):
             if(self.equal):
 
                 self.equal = False
-                self.valor.setText(self.valor.text() + button)
+                self.a_text(self.valor.text() + button)
             if not bool(self.valor.text()):
-                self.valor.setText(self.valor.text())
+                self.a_text(self.valor.text())
 
             else:
-                self.valor.setText(self.valor.text() + button)
+                self.a_text(self.valor.text() + button)
 
         # verificar si se ha introducido un numero
         if button in numeros:
             if(self.equal):
-                self.valor.setText(self.valor.text()[
+                self.a_text(self.valor.text()[
                     :-len(self.valor.text())])
                 self.equal = False
 
-                self.valor.setText(self.valor.text() + button)
+                self.a_text(self.valor.text() + button)
+
             else:
 
-                self.valor.setText(self.valor.text() + button)
+                self.a_text(self.valor.text() + button)
+
         # verificar si se ha introducido otros signos
         if button in dist:
             if(self.equal):
 
-                self.valor.setText(self.valor.text()[
+                self.a_text(self.valor.text()[
                     :-len(self.valor.text())])
                 self.equal = False
-                self.valor.setText(self.valor.text() + button)
+                self.a_text(self.valor.text() + button)
             else:
-                self.valor.setText(self.valor.text() + button)
+                self.a_text(self.valor.text() + button)
 
         # Si se pulsa 'AC' se establece el QLabel a vacio
         if(button == "AC"):
-            self.valor.setText("")
+            self.a_text("")
             self.equal = False
 
         # verificar si se ha introducido paréntesis antes
@@ -134,38 +134,63 @@ class MainWindow(QMainWindow):
             # verifica si lo que hay en el QLabel es un resultado
             # de una operacion
             if(self.equal):
-                self.valor.setText(
-                    self.valor.text()[:-len(self.valor.text())])
+                self.a_text(self.valor.text()[:-len(self.valor.text())])
                 self.equal = False
             # Los 2 if siguientes son para verificar si sa introducido
             # antes un paréntesis o no y actua en consecuencia
             if not self.ver:
                 self.ver = True
-                self.valor.setText(self.valor.text() + "(")
+                self.a_text(self.valor.text() + "(")
 
             elif(self.ver):
                 self.ver = False
 
-                self.valor.setText(self.valor.text() + ")")
+                self.a_text(self.valor.text() + ")")
 
         # verificar si el boton apretado es '=' , si es asi devolver el calculo
         elif(button == "="):
             # Comprueba que el QLabel no esta vacio
             # y si no lo esta seguira ejecutando
             if bool(self.valor.text()):
-                val = ""
                 self.equal = True
-
-                val = str(eval('{}'.format(self.valor.text()
-                                           .replace("%", "/100")
-                                           )))
-                self.valor.setText(val)
+                self.r_text(self.valor.text())
         # verificar si el boton apretado es el retroceso '<=' y
         # borra un espacio
         elif(button == "<="):
             # Comprueba que el QLabel no este vacio para poder borrar
             if bool(self.valor.text()):
-                self.valor.setText(self.valor.text()[:-1])
+                self.b1_text()
+
+    def a_text(self, text):
+        """[Actualiza el QLabel con los datos que le pasan]
+
+
+        Args:
+            text ([String]): [es el texto que le pasan]
+        """
+        self.valor.setText(text)
+
+    def b_text(self):
+        """
+        [Borra el texto que contiene el QLabels]
+
+        """
+        self.a_text("")
+        self.guardados = ""
+
+    def r_text(self, operacion):
+        """[ Recibe un string que contiene la operacionç
+        con la cual hacer los calculos]
+
+        Args:
+            operacion ([String]): [operacion]
+        """
+        self.a_text(str(eval(operacion.replace("%", "/100"))))
+
+    def b1_text(self):
+        """[Borra un espacio del QLabel]
+        """
+        self.a_text((self.valor.text()[:-1]))
 
 
 app = QApplication([])
