@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        #titulo de la ventana
+        # titulo de la ventana
         self.setWindowTitle("Calculadora")
         # numero de columnas que tendra la calculadora
         num_col = 4
