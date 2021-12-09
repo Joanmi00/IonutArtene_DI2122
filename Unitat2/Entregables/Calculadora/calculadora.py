@@ -1,3 +1,5 @@
+import math
+
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QPushButton, QWidget, QLabel, QVBoxLayout,
@@ -25,6 +27,7 @@ class MainWindow(QMainWindow):
         self.valores = ''
 
         button_list = [
+            '', 'π', '^', '!',
             'AC', '()', '%', '/',
             '7', '8', '9', '*',
             '4', '5', '6', '+',
@@ -41,7 +44,12 @@ class MainWindow(QMainWindow):
                                     button_list.index(element) % num_col
 
                                     )
-            self.bot[element].clicked.connect(self.mod_label)
+            if(element == ""):
+                self.bot[element].setEnabled(False)
+            elif(element == "!"):
+                self.bot[element].setEnabled(False)
+            else:
+                self.bot[element].clicked.connect(self.mod_label)
 
         layout.addWidget(self.valor)
         layout.addLayout(button_layout)
@@ -120,8 +128,10 @@ class MainWindow(QMainWindow):
             val = ""
             self.equal = True
 
-            val = str(eval('{}'.format(self.valor.text().
-                                       replace("%", "/100"))))
+            val = str(eval('{}'.format(self.valor.text()
+                                       .replace("%", "/100")
+                                       .replace("^", "**")
+                                       .replace("π", math.pi))))
             self.valor.setText(val)
         # verificar si el boton apretado es el retroceso '<=' y
         # borrar un espacio
