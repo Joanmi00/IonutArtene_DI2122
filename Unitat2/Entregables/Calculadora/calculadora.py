@@ -53,7 +53,7 @@ class MainWindow(QMainWindow):
     def mod_label(self):
         button = self.sender().text()
         self.verifica_valor(button)
-        # self.valor.setText(self.valores)
+        
 
     def verifica_valor(self, button):
         operacion = ['+', '*', '-', '/', ]
