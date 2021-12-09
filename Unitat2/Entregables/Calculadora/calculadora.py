@@ -16,8 +16,10 @@ class MainWindow(QMainWindow):
         # tamaño de la calculadora
         dim = QSize(400, 400)
 
+        # Creamos un QVBoxLayout para añadir el QLabel y el QGridLayout
         layout = QVBoxLayout()
-        # Añadimos un Qlabel para monstrar los datos introducidos
+        # Añadimos un Qlabel para mostrar los datos introducidos
+        # e resultado
         self.valor = QLabel()
         # Le indicamos al QLabel que queremos el texto alineado
         # a la derecha(Qt.AlignRight) y centrado (Qt.AlignVCenter)
@@ -38,7 +40,7 @@ class MainWindow(QMainWindow):
             '4', '5', '6', '+',
             '1', '2', '3', '-',
             '0', '.', '<=', '=']
-
+        # Creamos un QGridLayout para añadir los botones
         button_layout = QGridLayout()
 
         # recorremos la lista y vamos añadiendo los botones a QGridLayout
@@ -57,9 +59,11 @@ class MainWindow(QMainWindow):
 
         layout.addWidget(self.valor)
         layout.addLayout(button_layout)
+        # Creamos un widget para añadir el layout que contiene
+        # el QLabel y el QGridLayout
         widget = QWidget()
         widget.setLayout(layout)
-        self.setFixedSize(dim)
+        self.resize(dim)
         self.setCentralWidget(widget)
 
     def mod_label(self):
