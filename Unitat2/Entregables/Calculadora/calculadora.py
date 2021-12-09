@@ -53,47 +53,46 @@ class MainWindow(QMainWindow):
     def mod_label(self):
         button = self.sender().text()
         self.verifica_valor(button)
-        
 
     def verifica_valor(self, button):
         operacion = ['+', '*', '-', '/', ]
         numeros = ['0', '1', '2', '2', '3', '4', '5', '6', '7', '8', '9']
         dist = ['.', '%']
         # verificar si se a introducido una operacion
-        for ope in operacion:
-            if(ope == button):
 
-                if(self.equal):
+        if button in operacion:
 
-                    self.equal = False
-                    self.valores += button
-                    self.valor.setText(self.valor.text() + button)
-                else:
-                    self.valor.setText(self.valor.text() + button)
+            if(self.equal):
+
+                self.equal = False
+                self.valores += button
+                self.valor.setText(self.valor.text() + button)
+            else:
+                self.valor.setText(self.valor.text() + button)
         # verificar si se ha introducido un numero
-        for num in numeros:
-            if(num == button):
-                if(self.equal):
-                    self.valor.setText(self.valor.text()[
-                        :-len(self.valor.text())])
-                    self.equal = False
-                    self.valores += button
-                    self.valor.setText(self.valor.text() + button)
-                else:
-                    self.valores += button
-                    self.valor.setText(self.valor.text() + button)
-        for d in dist:
-            if(d == button):
-                if(self.equal):
-                    if(button == '%'):
-                        self.valores += "/100"
-                    self.valor.setText(self.valor.text()[
-                        :-len(self.valor.text())])
-                    self.equal = False
-                    self.valor.setText(self.valor.text() + button)
-                else:
+
+        if button in numeros:
+            if(self.equal):
+                self.valor.setText(self.valor.text()[
+                    :-len(self.valor.text())])
+                self.equal = False
+                self.valores += button
+                self.valor.setText(self.valor.text() + button)
+            else:
+                self.valores += button
+                self.valor.setText(self.valor.text() + button)
+
+        if button in dist:
+            if(self.equal):
+                if(button == '%'):
                     self.valores += "/100"
-                    self.valor.setText(self.valor.text() + button)
+                self.valor.setText(self.valor.text()[
+                    :-len(self.valor.text())])
+                self.equal = False
+                self.valor.setText(self.valor.text() + button)
+            else:
+                self.valores += "/100"
+                self.valor.setText(self.valor.text() + button)
 
         # Si se pulsa 'AC' se establece el QLabel a vacio
         if(button == "AC"):
@@ -120,10 +119,9 @@ class MainWindow(QMainWindow):
         elif(button == "="):
             val = ""
             self.equal = True
-            if '%' in self.valor.text():
-                val = str(eval('{}'.format(self.valores)))
-            else:
-                val = str(eval('{}'.format(self.valor.text())))
+
+            val = str(eval('{}'.format(self.valor.text().
+                                       replace("%", "/100"))))
             self.valor.setText(val)
         # verificar si el boton apretado es el retroceso '<=' y
         # borrar un espacio
