@@ -1,5 +1,3 @@
-import math
-
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QPushButton, QWidget, QLabel, QVBoxLayout,
@@ -33,9 +31,8 @@ class MainWindow(QMainWindow):
         self.ver = False
         # Esta variable es para verificar si se ha pulsado el igual
         self.equal = False
-        # lista con el texto de los botones
+        # lista con el texto de los botones en el orden deseado
         button_list = [
-            '', 'π', '^', '!',
             'AC', '()', '%', '/',
             '7', '8', '9', '*',
             '4', '5', '6', '+',
@@ -54,12 +51,8 @@ class MainWindow(QMainWindow):
                                     button_list.index(element) % num_col
 
                                     )
-            # desactivamos los siguientes botones ya que no estan implementados
-            if(element == ""):
-                self.bot[element].setEnabled(False)
-            elif(element == "!"):
-                self.bot[element].setEnabled(False)
-            # si un boton es pulsado llama a una funcion
+
+            # si un boton es pulsado llama a la funcion mod_label
             self.bot[element].clicked.connect(self.mod_label)
 
         layout.addWidget(self.valor)
@@ -73,7 +66,7 @@ class MainWindow(QMainWindow):
         """[summary]
         Esta funciona es llamada cuando se hace clic en un boton
             y a su vez llama a otra funciona que verifica que el valor
-            introducido es corecto
+            introducido es corecto pasandole el valor del boton
         """
         button = self.sender().text()
         self.verifica_valor(button)
@@ -88,9 +81,9 @@ class MainWindow(QMainWindow):
             button (String): [Es el texto que tiene el boton que ha sido
                                 pulsado]
         """
-        operacion = ['+', '*', '-', '/', ]
-        numeros = ['0', '1', '2', '2', '3', '4', '5', '6', '7', '8', '9']
-        dist = ['.', '%', 'π', '^', '', '!']
+        operacion = ['+', '*', '-', '/']
+        numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        dist = ['.', '%']
 
         # verificar si se a introducido una operacion
         if button in operacion:
@@ -161,8 +154,7 @@ class MainWindow(QMainWindow):
 
                 val = str(eval('{}'.format(self.valor.text()
                                            .replace("%", "/100")
-                                           .replace("^", "**")
-                                           .replace("π", str(math.pi)))))
+                                           )))
                 self.valor.setText(val)
         # verificar si el boton apretado es el retroceso '<=' y
         # borra un espacio
