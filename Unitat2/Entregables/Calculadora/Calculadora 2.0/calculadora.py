@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QApplication, QMainWindow, QPushButton, QWidget,
     QLabel, QVBoxLayout, QGridLayout
 )
-from PySide6.QtGui import QAction, QKeySequence
+from PySide6.QtGui import QAction, QFont, QKeySequence
 from ventana_atajos import MyPopup
 
 
@@ -24,6 +24,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout()
         # Añadimos un Qlabel para monstrar los datos introducidos
         self.valor = QLabel()
+        self.valor.setFont(QFont('Arial', 20)) 
         self.valor.setMinimumHeight(40)
 
         # Le indicamos al QLabel que queremos el texto alineado
