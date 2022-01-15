@@ -3,12 +3,28 @@
 ### Contenidos:
 ```
 .
-└──  Unitat2
-│     └── Entregables
-│         ├── exercici3.py
-│         └──Exercici4
-│             ├── config.py
-│             └── exercici41.py
+└── Unitat2
+│    └── Entregables
+│        ├── Calculadora
+│        │   ├── Calculadora2.1
+│        │   │   ├── calculadora.py
+│        │   │   ├── dialogo_eleccion.py
+│        │   │   ├── README.md
+│        │   │   ├── resources
+│        │   │   │   ├── con_guardado.png
+│        │   │   │   ├── __pycache__
+│        │   │   │   │   └── resources.cpython-310.pyc
+│        │   │   │   └── sin_guardado.png
+│        │   │   └── ventana_atajos.py
+│        │   └── calculadora.py
+│        ├── exercici3.py
+│        ├── Exercici4
+│        │   ├── config.py
+│        │   └── exercici41.py
+│        └── Pantalla_login
+│            ├── dialogo_eleccion.py
+│            └── pruebas.py
+│
 │           
 │
 │
