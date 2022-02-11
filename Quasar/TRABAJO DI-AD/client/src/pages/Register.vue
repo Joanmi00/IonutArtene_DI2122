@@ -14,7 +14,7 @@
               square filled clearable v-model="dni" type="" label="DNI"/>
               <q-input
               lazy-rules
-              :rules="[ valor => isValidNom || 'Formato incorrecto']"
+              :rules="[ valor =>valor && isValidNom || 'Formato incorrecto']"
               square filled clearable v-model="nom" type="" label="Nom" />
               <q-input
               lazy-rules
