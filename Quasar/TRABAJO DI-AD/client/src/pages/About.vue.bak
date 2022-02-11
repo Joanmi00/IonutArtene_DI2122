@@ -1,0 +1,19 @@
+<template>
+<q-page class="fullscreen bg-teal text-Lightblue  q-pa-md flex ">
+      <div style="font-size: 20vh">
+       About
+      </div>
+
+      <div class="text-h2" style="opacity:.4">
+       Es una App destinada al control de las notas en las asignaturas del curso.<br/>
+       Proyecto hecho en conjunto en las asignaturas DI-AD del IES El Just de Tavernes de La Valldigna
+      </div>
+</q-page>
+</template>
+
+<script>
+
+export default ({
+  name: 'About'
+})
+</script>
