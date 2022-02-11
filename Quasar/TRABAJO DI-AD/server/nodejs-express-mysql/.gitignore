@@ -6,10 +6,6 @@ node_modules
 *.key
 *.pem
 
-# Quasar core related directories
-
-
-
 # Cordova related directories and files
 /src-cordova/node_modules
 /src-cordova/platforms
