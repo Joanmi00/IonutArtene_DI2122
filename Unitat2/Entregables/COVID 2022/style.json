@@ -1,0 +1,76 @@
+{
+    "QStackedWidget": [
+        {
+            "name": "ventanas",
+            "transitionAnimation": [
+                {
+                    "fade": [
+                        {
+                            "active": true,
+                            "duration": 1000,
+                            "easingCurve": "OutBack"
+                        }
+                    ],
+                    "slide": [
+                        {
+                            "active": true,
+                            "duration": 1000,
+                            "direction": "horizontal",
+                            "easingCurve": "Linear"
+                        }
+                    ]
+                }
+            ],
+            "navigation": [
+                {
+                    "navigationButtons": [
+                        {
+                            "but_datos": "page_datos",
+                            "but_graficos": "page_graficos"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "QCustomSlideMenu": [
+        {
+            "name": "left_menu_widget",
+            "defaultSize": [
+                {
+                    "width": 0,
+                    "height": "parent"
+                }
+            ],
+            "collapsedSize": [
+                {
+                    "width": 0,
+                    "height": "parent"
+                }
+            ],
+            "expandedSize": [
+                {
+                    "width": 250,
+                    "height": "parent"
+                }
+            ],
+            "toggleButton": [
+                {
+                    "buttonName": "but_menu",
+                    "icons": [
+                        {
+                            "whenMenuIsCollapsed": ":/iconos/iconos covid/Menu_icon_icon-icons.com_71858.svg",
+                            "whenMenuIsExpanded": ":/iconos/iconos covid/left-arrow.png"
+                        }
+                    ]
+                }
+            ],
+            "menuTransitionAnimation": [
+                {
+                    "animationDuration": 500,
+                    "animatianEasingCurve": "Linear"
+                }
+            ]
+        }
+    ]
+}
