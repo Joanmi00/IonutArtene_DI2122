@@ -10,7 +10,6 @@ class dialogo_eleccion(QDialog):
         QBtn = QDialogButtonBox.Close
 
         self.buttonBox = QDialogButtonBox(QBtn)
-        self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
 
         self.layout = QVBoxLayout()
