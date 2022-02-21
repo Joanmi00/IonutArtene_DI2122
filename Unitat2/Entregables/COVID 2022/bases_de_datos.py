@@ -5,11 +5,11 @@ import os
 
 def sql_conection():
     """Devuelve la conexion a la base de datos
-        Parametros:
+        Args:
             sqlite3.connect : funcion que crea una conexion con la bd
-            points.db : base de datos que contiene la informacion en  sqlite3
+            users.db : base de datos que contiene la informacion en  sqlite3
 
-        Torna:
+        T:
             con : variable que contiene la conexion que establece
                                     sqlite.connect"""
     try:
@@ -26,9 +26,19 @@ con = sql_conection()
 
 
 def sql_read(user, password):
+    """Funcion que lee los usuarios guardados en la base de datos
+
+
+    Args:
+        user (Str): Parametro que lo recibe de la vista segun lo que ponga el usuario
+        password (Integer): Parametro que lo recibe de la vista segun lo que ponga el usuario
+
+    Returns:
+        valor_retorn : Si la base de datos le devuelve informacion 
+                        devolvera esa info si no devolvera vacio
+    """
     valor_retorn = ""
-    """Funcion que lee la puntuacion guardada en la base de datos
-                    en caso contrario devuelve 0"""
+
     cursorobj = con.cursor()
     cursorobj.execute(
         'select * from Users WHERE user=\'{}\' AND  password={};'.format(user, password))

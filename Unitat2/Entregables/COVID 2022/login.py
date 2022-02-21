@@ -10,6 +10,8 @@ import dialogo_eleccion as dialogo
 import principal
 import bases_de_datos as bd
 
+# Widget que se encarga de la vista y de la comprobacion de los datos introducidos
+
 
 class Login(QWidget):
 
@@ -29,11 +31,20 @@ class Login(QWidget):
         self.button = QPushButton("Conectar")
         layoutV2.addRow(self.button)
         self.button.clicked.connect(
-            lambda x: self.comprobacion_datos(self.user.text(),
+            lambda : self.comprobacion_datos(self.user.text(),
                                               self.password.text()))
         self.setLayout(layoutV2)
 
     def comprobacion_datos(self, user, password):
+        """
+        Funcion que se encarga de conectarse a la bd y si devuelve algo muestra 
+        la otra ventana si estas equivocado muestra un dialogo indicandolo
+
+        Args:
+            user (Str): El username que recibe de la vista
+            password (Integer): La contraseña que recibe de la vista
+
+        """
         if(bd.sql_read(user, password)):
             self.show_covid()
             self.hide()
@@ -41,11 +52,16 @@ class Login(QWidget):
             self.dialogo()
 
     def show_covid(self):
+        """Funcion que se encarga de cargar la pagina principal
+        """
         if self.w is None:
             self.w = principal.mainw(self)
         self.w.window.show()
 
     def dialogo(self):
+        """Funcion que se encarga de mostrar el dialogo ç
+                y que se encarga tambien de su funcionamiento
+        """
         salida = dialogo.dialogo_eleccion(self)
 
         if not salida.exec():

@@ -75,7 +75,7 @@ class mainw(QMainWindow):
         return loader.load(path, self)
 
     def create_line_chart(self):
-        """_summary_
+        """
         Esta funciona se encarga de leer el csv con los datos y  cargarlos en
         un Line Chart para ver la estadistica
         """
@@ -131,6 +131,7 @@ class mainw(QMainWindow):
     def slideLeftMenu(self):
         """_summary_
         Funcion que se encarga del movimiento del menu lateral
+                y de cambiar la imagen en funcion del estado del menu
         """
         width = self.window.widget_3.width()
 
@@ -154,9 +155,9 @@ class mainw(QMainWindow):
         self.animation.start()
 
     def login(self):
-        """_summary_
-        Función que se encarga se de cargar el login y de ocultar
-         la ventana actual
+        """
+        Función que se encarga  de cargar el login y de ocultar
+         la ventana principal
         """
         w = login.Login()
         w.show()
@@ -164,6 +165,9 @@ class mainw(QMainWindow):
             self.window.hide()
 
     def introducir_mun(self):
+        """Funcion que se encarga de cargar los distintos 
+                municipios segun su provincia 
+        """ 
         self.window.combo_municipios.clear()
         prov = self.sender().text()
         if(prov == "Castellon"):
@@ -174,6 +178,9 @@ class mainw(QMainWindow):
             self.window.combo_municipios.addItems(self.carga_alicante)
 
     def info(self):
+        """Funcion que es llamada cuando cambiamos el  municipio y que se encarga 
+        de llamar a su vez a cargar_datos con la nueva url creada 
+        apartir del municipio seleccionado"""
         municipio = self.window.combo_municipios.currentText().replace(
             "à", "%C3%A0").replace("ú", "%C3%BA").replace(
                 "ó", "%C3%B3").replace("á", "%C3%A1").replace(
@@ -206,6 +213,14 @@ class mainw(QMainWindow):
         self.carga_alicante = []
 
     def cargar_datos(self, url):
+        """Funcion que se encarga de conectarse al api ,leer los datos y si la 
+        variable que contiene los municipios esta vacia se encarga de cargar los
+        municipios segun su CodMunicpio desde la api
+
+        Args:
+            url (Str): La url es la que le dice donde conectarse para recoger 
+            la informacion necesaria 
+        """
 
         with urllib.request.urlopen(url) as response:
             datos = response.read()
