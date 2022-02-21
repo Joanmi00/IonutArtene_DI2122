@@ -253,6 +253,9 @@
                  <property name="currentText">
                   <string notr="true"/>
                  </property>
+                 <property name="maxVisibleItems">
+                  <number>5</number>
+                 </property>
                  <property name="placeholderText">
                   <string>Elija un Municipio</string>
                  </property>
