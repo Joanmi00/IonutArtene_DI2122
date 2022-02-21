@@ -166,7 +166,6 @@ class mainw(QMainWindow):
     def introducir_mun(self):
         self.window.combo_municipios.clear()
         prov = self.sender().text()
-        print(prov)
         if(prov == "Castellon"):
             self.window.combo_municipios.addItems(self.carga_castellon)
         elif(prov == "Valencia"):
