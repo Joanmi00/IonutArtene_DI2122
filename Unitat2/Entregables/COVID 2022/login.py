@@ -47,7 +47,7 @@ class Login(QWidget):
             password (Integer): La contraseña que recibe de la vista
 
         """
-        if(bd.sql_read(user, password)):
+        if(bd.sql_read(user, password)!=""):
             self.show_covid()
             self.hide()
         else:

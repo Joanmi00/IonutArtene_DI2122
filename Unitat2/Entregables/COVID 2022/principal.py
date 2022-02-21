@@ -205,8 +205,7 @@ class mainw(QMainWindow):
         municipios segun su CodMunicpio desde la api
 
         Args:
-            url (Str): La url es la que le dice donde conectarse para recoger 
-            la informacion necesaria 
+            url (Str): La url es la que indica donde se encuentra la api
         """
 
         with urllib.request.urlopen(url) as response:

@@ -40,9 +40,10 @@ def sql_read(user, password):
     valor_retorn = ""
 
     cursorobj = con.cursor()
-    cursorobj.execute(
-        'select * from Users WHERE user=\'{}\' AND  password={};'.format(user, password))
     try:
+        cursorobj.execute(
+            'select * from Users WHERE user=\'{}\' AND  password={};'.format(user, password))
+
         valor_retorn = cursorobj.fetchone()
 
     except:
