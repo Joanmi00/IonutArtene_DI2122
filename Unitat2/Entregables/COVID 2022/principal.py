@@ -25,7 +25,7 @@ class mainw(QMainWindow):
     def __init__(self, parent=None):
         super(mainw, self).__init__()
         url = "https://dadesobertes.gva.es/va/api/3/action/datastore_search?" + \
-            "resource_id=7968883a-2329-4c26-8304-83f19ec54ab1&limit=500"
+            "resource_id=7968883a-2329-4c26-8304-83f19ec54ab1&limit=542"
         self.carga()
         self.cargar_datos(url)
         self.window = self.load_ui()
@@ -38,7 +38,7 @@ class mainw(QMainWindow):
             __file__), "iconos covid/left-arrow.png")))
 
         self.window.label.setPixmap(imagen_covid)
-       
+
         # Acciones a ejectuar cuando se presione un boton
         self.window.but_menu.clicked.connect(lambda: self.slideLeftMenu())
         self.window.but_datos.clicked.connect(
@@ -166,8 +166,8 @@ class mainw(QMainWindow):
 
     def introducir_mun(self):
         """Funcion que se encarga de cargar los distintos 
-                municipios segun su provincia 
-        """ 
+                municipios segun la provincia seleccionada en el combo
+        """
         self.window.combo_municipios.clear()
         prov = self.sender().text()
         if(prov == "Castellon"):
@@ -179,31 +179,18 @@ class mainw(QMainWindow):
 
     def info(self):
         """Funcion que es llamada cuando cambiamos el  municipio y que se encarga 
-        de llamar a su vez a cargar_datos con la nueva url creada 
-        apartir del municipio seleccionado"""
-        municipio = self.window.combo_municipios.currentText().replace(
-            "à", "%C3%A0").replace("ú", "%C3%BA").replace(
-                "ó", "%C3%B3").replace("á", "%C3%A1").replace(
-                    "ñ", "%C3%B1").replace("í", "%C3%AD")
-        part_principal = "https://dadesobertes.gva.es/va/api/3/action" + \
-            "/datastore_search?"
-        muni = "q={"+"\""+"Municipi"+"\""+":" + \
-            "\""+"{}".format(municipio).replace(" ",
-                                                "%20")+"\""+"}"
-        part_final = "&resource_id=7968883a-2329-4c26-8304-83f19ec54ab1"
-
-        url = part_principal + muni + part_final
-        self.cargar_datos(url)
+        de cargar los datos del municipio"""
+        
+        municipio = self.window.combo_municipios.currentText()
         for dictionary in self.datos_python:
             try:
-                for key in dictionary.keys():
-                    if(key == "Incidència acumulada PCR+14"):
-                        self.window.label_pcr.setText(str(dictionary[key]))
-                    if(key == "Casos PCR+ 14 dies"):
-                        self.window.label_casos.setText(str(dictionary[key]))
-                    if(key == "Defuncions"):
-                        self.window.label_muertes.setText(str(dictionary[key]))
-
+                if(dictionary["Municipi"] == municipio):
+                    self.window.label_pcr.setText(
+                        str(dictionary["Incidència acumulada PCR+14"]))
+                    self.window.label_casos.setText(
+                        str(dictionary["Casos PCR+ 14 dies"]))
+                    self.window.label_muertes.setText(
+                        str(dictionary["Defuncions"]))
             except KeyError:
                 pass
 
