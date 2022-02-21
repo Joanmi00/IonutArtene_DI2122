@@ -3,6 +3,7 @@ from PySide6.QtWidgets import (
     QPushButton, QLabel, QWidget
 )
 from PySide6.QtCore import (QCoreApplication, Qt)
+from PySide6.QtGui import QKeySequence
 
 import sys
 
@@ -33,6 +34,7 @@ class Login(QWidget):
         self.button.clicked.connect(
             lambda : self.comprobacion_datos(self.user.text(),
                                               self.password.text()))
+        self.button.setShortcut(Qt.Key_Return)
         self.setLayout(layoutV2)
 
     def comprobacion_datos(self, user, password):

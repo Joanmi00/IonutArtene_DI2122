@@ -38,7 +38,7 @@ class mainw(QMainWindow):
             __file__), "iconos covid/left-arrow.png")))
 
         self.window.label.setPixmap(imagen_covid)
-
+       
         # Acciones a ejectuar cuando se presione un boton
         self.window.but_menu.clicked.connect(lambda: self.slideLeftMenu())
         self.window.but_datos.clicked.connect(
